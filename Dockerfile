@@ -3,6 +3,9 @@ MAINTAINER Jeremy Shimko <jeremy.shimko@gmail.com>
 
 RUN groupadd -r node && useradd -m -g node node
 
+#Set Memory Limit
+ENV TOOL_NODE_FLAGS="--max_old_space_size=4096"
+
 # Gosu
 ENV GOSU_VERSION 1.10
 
@@ -64,8 +67,6 @@ ONBUILD RUN cd $APP_SOURCE_DIR && \
   $BUILD_SCRIPTS_DIR/post-build-cleanup.sh
 
 # Default values for Meteor environment variables
-ENV ROOT_URL http://localhost
-ENV MONGO_URL mongodb://127.0.0.1:27017/meteor
 ENV PORT 3000
 
 EXPOSE 3000
