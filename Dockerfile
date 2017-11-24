@@ -3,8 +3,7 @@ MAINTAINER Jeremy Shimko <jeremy.shimko@gmail.com>
 
 RUN groupadd -r node && useradd -m -g node node
 
-#Set Memory Limit
-ENV TOOL_NODE_FLAGS="--max_old_space_size=4096"
+
 
 # Gosu
 ENV GOSU_VERSION 1.10
@@ -47,7 +46,10 @@ ONBUILD ENV INSTALL_GRAPHICSMAGICK $INSTALL_GRAPHICSMAGICK
 
 # Node flags for the Meteor build tool
 ONBUILD ARG TOOL_NODE_FLAGS
-ONBUILD ENV TOOL_NODE_FLAGS $TOOL_NODE_FLAGS
+ONBUILD ENV TOOL_NODE_FLAGS "--max_old_space_size=4096"
+
+#Set Memory Limit
+ENV TOOL_NODE_FLAGS="--max_old_space_size=4096"
 
 # optionally custom apt dependencies at app build time
 ONBUILD RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GET_INSTALL; fi
