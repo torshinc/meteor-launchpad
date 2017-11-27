@@ -23,7 +23,7 @@ mkdir -p $(dirname $FFMPEG_PROFILE_PATH)
 echo 'export PATH="$PATH:$FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/bin"' >> $FFMPEG_PROFILE_PATH
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/lib"' >> $FFMPEG_PROFILE_PATH
 
-chown -R $(id -u):$(id -g) $FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/
+chown -R $(id -u):$(id -g) $FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR
 chmod +x $FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/bin/ffmpeg
 
 ln -sf $FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/bin/ffmpeg /usr/local/share/ffmpeg
