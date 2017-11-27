@@ -19,9 +19,9 @@ mkdir -p $FFMPEG_BUILD_DIR
 cd $FFMPEG_BUILD_DIR
 mkdir -p $FFMPEG_VENDOR_DIR
 cd $FFMPEG_VENDOR_DIR
-wget $FFMPEG_DOWNLOAD_URL
-tar xz ffmpeg3.tar.gz
-# curl -L --silent $FFMPEG_DOWNLOAD_URL | tar xz
+# wget $FFMPEG_DOWNLOAD_URL
+# tar xz ffmpeg3.tar.gz
+curl -L --silent $FFMPEG_DOWNLOAD_URL | tar xz
 
 echo "exporting PATH and LIBRARY_PATH"
 FFMPEG_PROFILE_PATH="$FFMPEG_BUILD_DIR/.profile.d/ffmpeg.sh"
