@@ -10,8 +10,8 @@ FFMPEG_BUILD_DIR=$1
 FFMPEG_VENDOR_DIR="ffmpegvendor"
 FFMPEG_DOWNLOAD_URL="https://s3.amazonaws.com/torsh-talent/ffmpeg3.tar.gz"
 
-apt-get update
-apt-get install -y wget chrpath libssl-dev libxft-dev
+# apt-get update
+# apt-get install -y wget chrpath libssl-dev libxft-dev
 
 echo "FFMPEG_BUILD_DIR = " $FFMPEG_BUILD_DIR
 echo "DOWNLOAD_URL = " $FFMPEG_DOWNLOAD_URL
@@ -19,9 +19,9 @@ mkdir -p $FFMPEG_BUILD_DIR
 cd $FFMPEG_BUILD_DIR
 mkdir -p $FFMPEG_VENDOR_DIR
 cd $FFMPEG_VENDOR_DIR
-wget $FFMPEG_DOWNLOAD_URL
-tar xvjf ffmpeg3.tar.gz
-# curl -L --silent $FFMPEG_DOWNLOAD_URL | tar xz
+# wget $FFMPEG_DOWNLOAD_URL
+# tar xvjf ffmpeg3.tar.gz
+curl -L --silent $FFMPEG_DOWNLOAD_URL | tar xz
 
 echo "exporting PATH and LIBRARY_PATH"
 FFMPEG_PROFILE_PATH="$FFMPEG_BUILD_DIR/.profile.d/ffmpeg.sh"
@@ -36,4 +36,4 @@ ln -sf $FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/bin/ffmpeg /usr/local/share/f
 ln -sf $FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/bin/ffmpeg /usr/local/bin/ffmpeg
 ln -sf $FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/bin/ffmpeg /usr/bin/ffmpeg
 
-apt-get -y purge wget
+# apt-get -y purge wget
