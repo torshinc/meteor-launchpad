@@ -20,7 +20,7 @@ ENV PHANTOM_VERSION 2.1.1
 ENV APP_SOURCE_DIR /opt/meteor/src
 ENV APP_BUNDLE_DIR /opt/meteor/dist
 ENV BUILD_SCRIPTS_DIR /opt/build_scripts
-ENV BUILD_DIR /usr/local
+ENV BUILD_DIR /usr/buildme
 ENV CACHE_DIR /tmp
 
 # Add entrypoint and build scripts
