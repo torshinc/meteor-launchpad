@@ -15,8 +15,15 @@ apt-get install -y wget chrpath libssl-dev libxft-dev
 
 cd /tmp
 wget $FFMPEG_DOWNLOAD_URL
-tar -xzf ffmpeg3.tar.gz
+tar -xvjf ffmpeg3.tar.gz
+
+chown -R 777 ffmpeg
+chmod +x ffmpeg/bin/ffmpeg
+
 mv ffmpeg /usr/local/share
+
+chown -R 777 /usr/local/share/ffmpeg
+chmod +x /usr/local/share/ffmpeg/bin/ffmpeg
 
 ln -sf /usr/local/share/ffmpeg/bin/ffmpeg /usr/local/share/ffmpeg
 ln -sf /usr/local/share/ffmpeg/bin/ffmpeg /usr/local/bin/ffmpeg
