@@ -12,6 +12,7 @@ FFMPEG_DOWNLOAD_URL="https://s3.amazonaws.com/torsh-talent/ffmpeg3.tar.gz"
 
 echo "FFMPEG_BUILD_DIR = " $FFMPEG_BUILD_DIR
 echo "DOWNLOAD_URL = " $FFMPEG_DOWNLOAD_URL
+mkdir -p $FFMPEG_BUILD_DIR
 cd $FFMPEG_BUILD_DIR
 mkdir -p $FFMPEG_VENDOR_DIR
 cd $FFMPEG_VENDOR_DIR
