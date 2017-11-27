@@ -15,13 +15,13 @@ cd /tmp
 wget https://s3.amazonaws.com/torsh-talent/ffmpeg3.tar.gz
 tar -xzf ffmpeg3.tar.gz
 
-chown -R 777 ffmpeg
-chmod +x ffmpeg/bin/ffmpeg
+sudo chown -R 777 ffmpeg
+sudo chmod +x ffmpeg/bin/ffmpeg
 
 mv ffmpeg /usr/local/share
 
-chown -R 777 /usr/local/share/ffmpeg
-chmod +x /usr/local/share/ffmpeg/bin/ffmpeg
+sudo chown -R 777 /usr/local/share/ffmpeg
+sudo chmod +x /usr/local/share/ffmpeg/bin/ffmpeg
 
 ln -sf /usr/local/share/ffmpeg/bin/ffmpeg /usr/local/share/ffmpeg
 ln -sf /usr/local/share/ffmpeg/bin/ffmpeg /usr/local/bin/ffmpeg
