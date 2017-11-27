@@ -8,13 +8,11 @@ printf "\n[-] Installing FFMPEG...\n\n"
 # FFMPEG
 ############################################
 
-FFMPEG_DOWNLOAD_URL="https://s3.amazonaws.com/torsh-talent/ffmpeg3.tar.gz"
-
 apt-get update
 apt-get install -y wget chrpath libssl-dev libxft-dev
 
 cd /tmp
-wget $FFMPEG_DOWNLOAD_URL
+wget https://s3.amazonaws.com/torsh-talent/ffmpeg3.tar.gz
 tar -xzf ffmpeg3.tar.gz
 
 chown -R 777 ffmpeg
