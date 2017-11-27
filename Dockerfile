@@ -20,7 +20,7 @@ ENV PHANTOM_VERSION 2.1.1
 ENV APP_SOURCE_DIR /opt/meteor/src
 ENV APP_BUNDLE_DIR /opt/meteor/dist
 ENV BUILD_SCRIPTS_DIR /opt/build_scripts
-ENV BUILD_DIR /
+ENV BUILD_DIR /usr/local/share/
 ENV CACHE_DIR /tmp
 
 # Add entrypoint and build scripts
@@ -60,18 +60,12 @@ ONBUILD RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y
 ONBUILD COPY . $APP_SOURCE_DIR
 
 # install all dependencies, build app, clean up
-
-RUN apt-get update
-RUN apt-get install -y software-properties-common python-software-properties
-RUN add-apt-repository ppa:mc3man/trusty-media -y
-RUN apt-get update
-RUN apt-get install -y ffmpeg
-
 ONBUILD RUN cd $APP_SOURCE_DIR && \
   $BUILD_SCRIPTS_DIR/install-deps.sh && \
   $BUILD_SCRIPTS_DIR/install-node.sh && \
   $BUILD_SCRIPTS_DIR/install-phantom.sh && \
   $BUILD_SCRIPTS_DIR/install-graphicsmagick.sh && \
+  $BUILD_SCRIPTS_DIR/install-ffmpeg.sh $BUILD_DIR $CACHE_DIR && \
   $BUILD_SCRIPTS_DIR/install-mediainfo.sh $BUILD_DIR $CACHE_DIR && \
   $BUILD_SCRIPTS_DIR/install-wkhtmltopdf.sh $BUILD_DIR $CACHE_DIR && \
   $BUILD_SCRIPTS_DIR/install-libreoffice.sh $BUILD_DIR $CACHE_DIR && \
