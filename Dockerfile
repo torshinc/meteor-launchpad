@@ -20,6 +20,8 @@ ENV PHANTOM_VERSION 2.1.1
 ENV APP_SOURCE_DIR /opt/meteor/src
 ENV APP_BUNDLE_DIR /opt/meteor/dist
 ENV BUILD_SCRIPTS_DIR /opt/build_scripts
+ENV BUILD_DIR /
+ENV CACHE_DIR /tmp
 
 # Add entrypoint and build scripts
 COPY scripts $BUILD_SCRIPTS_DIR
@@ -63,10 +65,10 @@ ONBUILD RUN cd $APP_SOURCE_DIR && \
   $BUILD_SCRIPTS_DIR/install-node.sh && \
   $BUILD_SCRIPTS_DIR/install-phantom.sh && \
   $BUILD_SCRIPTS_DIR/install-graphicsmagick.sh && \
-  $BUILD_SCRIPTS_DIR/install-ffmpeg.sh && \
-  $BUILD_SCRIPTS_DIR/install-mediainfo.sh && \
-  $BUILD_SCRIPTS_DIR/install-wkhtmltopdf.sh && \
-  $BUILD_SCRIPTS_DIR/install-libreoffice.sh && \
+  $BUILD_SCRIPTS_DIR/install-ffmpeg.sh $BUILD_DIR $CACHE_DIR && \
+  $BUILD_SCRIPTS_DIR/install-mediainfo.sh $BUILD_DIR $CACHE_DIR && \
+  $BUILD_SCRIPTS_DIR/install-wkhtmltopdf.sh $BUILD_DIR $CACHE_DIR && \
+  $BUILD_SCRIPTS_DIR/install-libreoffice.sh $BUILD_DIR $CACHE_DIR && \
   $BUILD_SCRIPTS_DIR/install-mongo.sh && \
   $BUILD_SCRIPTS_DIR/install-meteor.sh && \
   $BUILD_SCRIPTS_DIR/build-meteor.sh && \
