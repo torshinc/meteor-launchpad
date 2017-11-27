@@ -16,7 +16,9 @@ mkdir -p $FFMPEG_BUILD_DIR
 cd $FFMPEG_BUILD_DIR
 mkdir -p $FFMPEG_VENDOR_DIR
 cd $FFMPEG_VENDOR_DIR
-curl -L --silent $FFMPEG_DOWNLOAD_URL | tar xz
+wget $FFMPEG_DOWNLOAD_URL
+tar xvjf ffmpeg3.tar.gz
+# curl -L --silent $FFMPEG_DOWNLOAD_URL | tar xz
 
 echo "exporting PATH and LIBRARY_PATH"
 FFMPEG_PROFILE_PATH="$FFMPEG_BUILD_DIR/.profile.d/ffmpeg.sh"
@@ -24,7 +26,7 @@ mkdir -p $(dirname $FFMPEG_PROFILE_PATH)
 echo 'export PATH="$PATH:$FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/bin"' >> $FFMPEG_PROFILE_PATH
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/lib"' >> $FFMPEG_PROFILE_PATH
 
-chown -R $(id -u):$(id -g) $FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR
+chown -R $(id -u):$(id -g) $FFMPEG_BUILD_DIR
 chmod +x $FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/bin/ffmpeg
 
 ln -sf $FFMPEG_BUILD_DIR/$FFMPEG_VENDOR_DIR/ffmpeg/bin/ffmpeg /usr/local/share/ffmpeg
