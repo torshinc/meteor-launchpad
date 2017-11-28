@@ -21,6 +21,7 @@ curl -L --silent -o $DEB $WKHTMLTOPDF_DOWNLOAD_URL
 echo "-----> Installing wkhtmltopdf 0.12.2.1"
 mkdir -p $BUILD_DIR/.apt
 dpkg -x $DEB $BUILD_DIR/.apt/
+chown -R node:node $BUILD_DIR
 
 echo "Writing profile script"
 mkdir -p $BUILD_DIR/.profile.d

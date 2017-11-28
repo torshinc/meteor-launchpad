@@ -40,12 +40,16 @@ echo "-----> LibreOffice: Extracting LibreOffice ${VERSION} binaries to ${BUILD_
 mkdir -p $CACHE_DIR/$ARCHIVE_NAME
 mkdir -p $BUILD_DIR/vendor/
 tar xzf $CACHE_DIR/$FILE_NAME -C $CACHE_DIR/$ARCHIVE_NAME
+chown -R node:node $CACHE_DIR
 mv ${CACHE_DIR}/${ARCHIVE_NAME}/opt/libreoffice${MINOR_VERSION} $BUILD_DIR/vendor/libreoffice
+chown -R node:node $BUILD_DIR
 
 echo "-----> LibreOffice: Extracting LibreOffice dependencies to ${BUILD_DIR}/vendor/libreoffice/deps"
 mkdir -p $CACHE_DIR/$DEPS_ARCHIVE_NAME
 tar xzf $CACHE_DIR/$DEPS_FILE_NAME -C $CACHE_DIR
+chown -R node:node $CACHE_DIR
 mv $CACHE_DIR/$DEPS_ARCHIVE_NAME $BUILD_DIR/vendor/libreoffice/deps
+chown -R node:node $BUILD_DIR
 
 echo "-----> LibreOffice: Setting PATH and LD_LIBRARY_PATH"
 PROFILE_PATH="$BUILD_DIR/.profile.d/libreoffice.sh"
