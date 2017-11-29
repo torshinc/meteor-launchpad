@@ -11,11 +11,11 @@ ENV GOSU_VERSION 1.10
 #Java Runtime, used by open office
 RUN \
   apt-get update && \
-  apt-get install -y openjdk-7-jre && \
+  apt-get install -y openjdk-8-jre && \
   rm -rf /var/lib/apt/lists/*
 
 # Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 # MongoDB
 ENV MONGO_VERSION 3.4.10
