@@ -1,5 +1,5 @@
-FROM debian:jessie
-MAINTAINER Jeremy Shimko <jeremy.shimko@gmail.com>
+FROM ubuntu:16.04
+MAINTAINER David Sykora <dsykorao@gmail.com>
 
 RUN groupadd -r node && useradd -m -g node node
 
@@ -7,6 +7,15 @@ RUN groupadd -r node && useradd -m -g node node
 
 # Gosu
 ENV GOSU_VERSION 1.10
+
+#Java Runtime, used by open office
+RUN \
+  apt-get update && \
+  apt-get install -y openjdk-7-jre && \
+  rm -rf /var/lib/apt/lists/*
+
+# Define commonly used JAVA_HOME variable
+ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 
 # MongoDB
 ENV MONGO_VERSION 3.4.10
