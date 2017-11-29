@@ -10,16 +10,20 @@ set -e
 
 
 # Test installing Oracle java 8
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
-add-apt-repository -y ppa:webupd8team/java
 apt-get update
+apt-get upgrade -y
+apt-get install -y  software-properties-common
+add-apt-repository ppa:webupd8team/java -y
+apt-get update
+echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 apt-get install -y oracle-java8-installer
-rm -rf /var/lib/apt/lists/*
-rm -rf /var/cache/oracle-jdk8-installer
+
 
 apt-get update
 apt-get -y -q install default-jdk libreoffice libreoffice-writer ure libreoffice-java-common libreoffice-base libreoffice-core libreoffice-common fonts-opensymbol hyphen-fr hyphen-de hyphen-en-us hyphen-it hyphen-ru fonts-dejavu fonts-dejavu-core fonts-dejavu-extra fonts-noto fonts-dustin fonts-f500 fonts-fanwood fonts-freefont-ttf fonts-liberation fonts-lmodern fonts-lyx fonts-sil-gentium fonts-texgyre fonts-tlwg-purisa
 apt-get -q -y remove libreoffice-gnome
+
+apt-get clean
 
 #BUILD_DIR=$1
 #CACHE_DIR=$2
