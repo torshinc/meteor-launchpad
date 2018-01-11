@@ -5,7 +5,7 @@ set -e
 ############################################
 # Wkhtmltopdf
 ############################################
-echo "-----> Install wkhtmltopdf"
+echo "-----> Install wkhtmltopdffff"
 
 #BUILD_DIR=$1
 #CACHE_DIR=$2
