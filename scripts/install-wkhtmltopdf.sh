@@ -38,8 +38,10 @@ echo "-----> Install wkhtmltopdf"
 # Wkhtmltopdf Dockerfile try 2
 ############################################
 
+echo "-----> Install WGET"
 apt-get update
 apt-get install -y wget
+
 cd /tmp
 wget https://s3.amazonaws.com/torsh-talent-build-assets/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
 tar -vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
