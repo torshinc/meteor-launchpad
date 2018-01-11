@@ -40,7 +40,7 @@ echo "-----> Install wkhtmltopdf"
 
 echo "-----> Install WGET"
 apt-get update
-apt-get install -y wget
+apt-get install -y wget chrpath libssl-dev libxft-dev
 
 cd /tmp
 wget https://s3.amazonaws.com/torsh-talent-build-assets/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
