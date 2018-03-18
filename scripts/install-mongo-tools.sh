@@ -16,6 +16,15 @@ if [ "$INSTALL_MONGO_TOOLS" = true ]; then
 	apt-get update
 
   apt-get install -y \
+    ${MONGO_PACKAGE}=$MONGO_VERSION \
+    ${MONGO_PACKAGE}-shell=$MONGO_VERSION \
     ${MONGO_PACKAGE}-tools=$MONGO_VERSION
+
+  mkdir -p /data/{db,configdb}
+  chown -R mongodb:mongodb /data/{db,configdb}
+
+	rm -rf /var/lib/apt/lists/*
+	rm -rf /var/lib/mongodb
+  mv /etc/mongod.conf /etc/mongod.conf.orig
 
 fi
