@@ -43,8 +43,8 @@ apt-get update
 apt-get install -y wget chrpath libssl-dev libxft-dev
 
 cd /tmp
-wget https://s3.amazonaws.com/torsh-talent-build-assets/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
-tar -vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
+wget https://torsh-talent-build-assets.s3.amazonaws.com/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+tar -vxf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 
 chown -R node:node wkhtmltox
 chmod +x wkhtmltox/bin/wkhtmltopdf
