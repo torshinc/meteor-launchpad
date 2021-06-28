@@ -6,7 +6,7 @@ RUN groupadd -r node && useradd -m -g node node
 
 
 # Gosu
-ENV GOSU_VERSION 1.10
+ENV GOSU_VERSION 1.13
 
 #Java Runtime, used by open office
 RUN \
@@ -18,8 +18,8 @@ RUN \
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 # MongoDB
-ENV MONGO_VERSION 3.4.10
-ENV MONGO_MAJOR 3.4
+ENV MONGO_VERSION 4.2.14
+ENV MONGO_MAJOR 4.2
 ENV MONGO_PACKAGE mongodb-org
 
 # PhantomJS
