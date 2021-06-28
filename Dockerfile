@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:19.04
 MAINTAINER David Sykora <dsykorao@gmail.com>
 
 RUN groupadd -r node && useradd -m -g node node
