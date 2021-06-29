@@ -10,19 +10,12 @@ ENV GOSU_VERSION 1.13
 ENV DEBIAN_FRONTEND noninteractive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
-#Java Runtime, used by open office, line 15 and 16 added recently to test dockerfile
+#Java Runtime, used by open office
 RUN \
   apt-get update && \
   apt-get install -y openjdk-8-jre && \
-  apt-get install -y ant && \
-  apt-get clean && \
   rm -rf /var/lib/apt/lists/*
   
-# Fix certificate issues, added recently to test improved dockerfile
-RUN apt-get update && \
-    apt-get install ca-certificates-java && \
-    apt-get clean && \
-    update-ca-certificates -f;
 
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
