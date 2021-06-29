@@ -27,6 +27,9 @@ rm -rf /tmp/*
 rm -rf /opt/nodejs/bin/npm
 rm -rf /opt/nodejs/lib/node_modules/npm/
 
+#maybe fix issues with package database
+dpkg --configure -a
+
 # remove os dependencies
 apt-get purge -y --auto-remove apt-transport-https build-essential bsdtar bzip2 ca-certificates curl git python
 apt-get -y autoremove

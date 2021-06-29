@@ -11,11 +11,11 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 #Java Runtime, used by open office
-RUN \
-  apt-get update && \
-  apt-get install -y openjdk-8-jre && \
-  rm -rf /var/lib/apt/lists/*
-  
+# RUN \
+#   apt-get update && \
+#   apt-get install -y openjdk-8-jre && \
+#   rm -rf /var/lib/apt/lists/*
+
 
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
