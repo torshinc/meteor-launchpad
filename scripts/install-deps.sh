@@ -46,9 +46,9 @@ for server in ha.pool.sks-keyservers.net \
     gpg --keyserver "$server" --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && break || echo "Trying new server..."
 done
 
-gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu
+gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu || echo "verification of gosu.asc failed..."
 
-rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc
+rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc || echo "Rm rf of gosu.asc failed..."
 
 chmod +x /usr/local/bin/gosu
 
