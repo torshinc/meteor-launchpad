@@ -18,6 +18,14 @@ if [ "$INSTALL_MONGO" = true ]; then
     apt-key adv --keyserver "$server" --recv-keys 0C49F3730359A14518585931BC711F9BA15703C6 && break || echo "Trying new server..."
   done
 
+	for server in ha.pool.sks-keyservers.net \
+              hkp://p80.pool.sks-keyservers.net:80 \
+              keyserver.ubuntu.com \
+              hkp://keyserver.ubuntu.com:80 \
+              pgp.mit.edu; do
+    apt-key adv --keyserver "$server" --recv-keys 4B7C549A058F8B6B && break || echo "Trying new server..."
+  done
+
   echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/$MONGO_MAJOR main" > /etc/apt/sources.list.d/mongodb-org.list
 
 	apt-get update
