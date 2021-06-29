@@ -41,7 +41,7 @@ if [ "$INSTALL_MONGO_TOOLS" = true ]; then
   # echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/$MONGO_MAJOR main" > /etc/apt/sources.list.d/mongodb-org.list
 
   # for mongoDB version 4.2 from https://itectec.com/ubuntu/ubuntu-apt-get-fails-on-16-04-or-18-04-installing-mongodb/
-  echo "deb [arch=amd64] http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/$MONGO_MAJOR multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-$MONGO_MAJOR.list
+  echo "deb [arch=amd64] http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/$MONGO_MAJOR multiverse" > /etc/apt/sources.list.d/mongodb-org-$MONGO_MAJOR.list
 
   # for mongoDB version 4.4 (on Ubuntu 20.04) from https://itectec.com/ubuntu/ubuntu-apt-get-fails-on-16-04-or-18-04-installing-mongodb/
   # echo "deb [arch=amd64] http://repo.mongodb.org/apt/ubuntu $(lsb_release -sc)/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org.list
