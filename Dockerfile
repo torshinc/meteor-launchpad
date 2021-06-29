@@ -6,6 +6,10 @@ RUN groupadd -r node && useradd -m -g node node
 # Gosu
 ENV GOSU_VERSION 1.13
 
+#Maybe fix an issue with MongoDB version 4.2 asking for user input on install, from: https://github.com/phusion/baseimage-docker/issues/58
+ENV DEBIAN_FRONTEND noninteractive
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
 #Java Runtime, used by open office, line 15 and 16 added recently to test dockerfile
 RUN \
   apt-get update && \
