@@ -3,16 +3,22 @@ MAINTAINER David Sykora <dsykora@gmail.com>
 
 RUN groupadd -r node && useradd -m -g node node
 
-
-
 # Gosu
 ENV GOSU_VERSION 1.13
 
-#Java Runtime, used by open office
+#Java Runtime, used by open office, line 15 and 16 added recently to test dockerfile
 RUN \
   apt-get update && \
   apt-get install -y openjdk-8-jre && \
+  apt-get install -y ant && \
+  apt-get clean \
   rm -rf /var/lib/apt/lists/*
+  
+# Fix certificate issues, added recently to test improved dockerfile
+RUN apt-get update && \
+    apt-get install ca-certificates-java && \
+    apt-get clean && \
+    update-ca-certificates -f;
 
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
