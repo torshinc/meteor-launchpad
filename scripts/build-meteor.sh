@@ -15,6 +15,11 @@ fi
 # https://github.com/meteor/meteor/issues/7959
 export METEOR_ALLOW_SUPERUSER=true
 
+# Temporary fix for older version of Node that doesn't recognize new certificate format used by letsEncrypt
+# Remove ASAP
+# https://docs.meteor.com/expired-certificate.html
+export NODE_TLS_REJECT_UNAUTHORIZE="0"
+
 cd $APP_SOURCE_DIR
 
 # Install app deps
