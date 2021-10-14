@@ -18,8 +18,11 @@ export METEOR_ALLOW_SUPERUSER=true
 # Temporary fix for older version of Node that doesn't recognize new certificate format used by letsEncrypt
 # Remove ASAP
 # https://docs.meteor.com/expired-certificate.html
-printf "\n[-] Exporting Environment variable reject unauth\n\n"
+printf "\n[-] Exporting Environment variable reject unauth 0\n\n"
 export NODE_TLS_REJECT_UNAUTHORIZE=0
+
+printf "\n[-] Release info?\n\n"
+cat /etc/os-release
 
 cd $APP_SOURCE_DIR
 
@@ -28,12 +31,12 @@ printf "\n[-] Running npm install in app directory...\n\n"
 NODE_TLS_REJECT_UNAUTHORIZED=0 meteor npm install
 
 # build the bundle
-printf "\n[-] Building Meteor application... with reject unauth\n\n"
+printf "\n[-] Building Meteor application... with reject unauth 0\n\n"
 mkdir -p $APP_BUNDLE_DIR
-NODE_TLS_REJECT_UNAUTHORIZE=0 meteor build --directory $APP_BUNDLE_DIR --server-only
+NODE_TLS_REJECT_UNAUTHORIZE="0" meteor build --directory $APP_BUNDLE_DIR --server-only
 
 # run npm install in bundle
-printf "\n[-] Running npm install in the server bundle... with reject unauth\n\n"
+printf "\n[-] Running npm install in the server bundle... with reject unauth 0\n\n"
 cd $APP_BUNDLE_DIR/bundle/programs/server/
 NODE_TLS_REJECT_UNAUTHORIZED=0 meteor npm install --production
 
