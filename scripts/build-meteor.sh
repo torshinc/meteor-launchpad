@@ -19,7 +19,7 @@ export METEOR_ALLOW_SUPERUSER=true
 # Remove ASAP
 # https://docs.meteor.com/expired-certificate.html
 printf "\n[-] Exporting Environment variable reject unauth\n\n"
-export NODE_TLS_REJECT_UNAUTHORIZE="0"
+export NODE_TLS_REJECT_UNAUTHORIZE=0
 
 cd $APP_SOURCE_DIR
 
@@ -30,7 +30,7 @@ meteor npm install
 # build the bundle
 printf "\n[-] Building Meteor application...\n\n"
 mkdir -p $APP_BUNDLE_DIR
-meteor build --directory $APP_BUNDLE_DIR --server-only
+NODE_TLS_REJECT_UNAUTHORIZE=0 meteor build --directory $APP_BUNDLE_DIR --server-only
 
 # run npm install in bundle
 printf "\n[-] Running npm install in the server bundle...\n\n"
