@@ -25,17 +25,17 @@ cd $APP_SOURCE_DIR
 
 # Install app deps
 printf "\n[-] Running npm install in app directory...\n\n"
-meteor npm install
+NODE_TLS_REJECT_UNAUTHORIZED=0 meteor npm install
 
 # build the bundle
-printf "\n[-] Building Meteor application...\n\n"
+printf "\n[-] Building Meteor application... with reject unauth\n\n"
 mkdir -p $APP_BUNDLE_DIR
 NODE_TLS_REJECT_UNAUTHORIZE=0 meteor build --directory $APP_BUNDLE_DIR --server-only
 
 # run npm install in bundle
-printf "\n[-] Running npm install in the server bundle...\n\n"
+printf "\n[-] Running npm install in the server bundle... with reject unauth\n\n"
 cd $APP_BUNDLE_DIR/bundle/programs/server/
-meteor npm install --production
+NODE_TLS_REJECT_UNAUTHORIZED=0 meteor npm install --production
 
 # put the entrypoint script in WORKDIR
 mv $BUILD_SCRIPTS_DIR/entrypoint.sh $APP_BUNDLE_DIR/bundle/entrypoint.sh
