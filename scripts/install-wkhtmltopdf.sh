@@ -78,11 +78,13 @@ cd /tmp
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
 dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
 
-# chown -R node:node /usr/local/bin/wkhtmltopdf
-# chmod +x /usr/local/bin/wkhtmltopdf
-# ln -sf /usr/local/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
+chown -R node:node /usr/local/bin/wkhtmltopdf
+chmod +x /usr/local/bin/wkhtmltopdf
+ln -sf /usr/local/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
 
 echo "Current version of wkhtmltopdf: $(wkhtmltopdf --version)"
+echo "Current path of wkhtmltopdf: $(which wkhtmltopdf)"
+
 
 # Cleanup
 rm -f wkhtmltox_0.12.6-1.bionic_amd64.deb
