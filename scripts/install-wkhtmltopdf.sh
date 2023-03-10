@@ -38,23 +38,45 @@ echo "-----> Install wkhtmltopdffff"
 # Wkhtmltopdf Dockerfile try 2
 ############################################
 
-echo "-----> Install WGET"
+# echo "-----> Install WGET"
+# apt-get update
+# apt-get install -y wget chrpath libssl-dev libxft-dev
+
+# cd /tmp
+# wget https://torsh-talent-build-assets.s3.amazonaws.com/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+# tar -vxf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+
+# chown -R node:node wkhtmltox
+# chmod +x wkhtmltox/bin/wkhtmltopdf
+
+# mv wkhtmltox /usr/local/share
+
+# chown -R node:node /usr/local/share/wkhtmltox
+# chmod +x /usr/local/share/wkhtmltox/bin/wkhtmltopdf
+
+# ln -sf /usr/local/share/wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+# ln -sf /usr/local/share/wkhtmltox/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
+
+# apt-get -y purge wget
+
+############################################
+# Update Wkhtmltopdf to version 0.12.6 from ChatGPT 
+############################################
+
+# Install required packages
 apt-get update
 apt-get install -y wget chrpath libssl-dev libxft-dev
 
+# from https://stackoverflow.com/questions/70073176/docker-install-wkhtmltopdf-error-updating-from-0-12-4-to-0-12-6
+apt install -y fontconfig fontconfig-config fonts-dejavu-core libbsd0 \
+libfontconfig1 libfontenc1 libfreetype6 libjpeg62-turbo libmd0 libpng16-16 \
+libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxext6 libxrender1 sensible-utils \
+ucf x11-common xfonts-75dpi xfonts-base xfonts-encodings xfonts-utils
+
+# Download and install wkhtmltopdf
 cd /tmp
-wget https://torsh-talent-build-assets.s3.amazonaws.com/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-tar -vxf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
 
-chown -R node:node wkhtmltox
-chmod +x wkhtmltox/bin/wkhtmltopdf
-
-mv wkhtmltox /usr/local/share
-
-chown -R node:node /usr/local/share/wkhtmltox
-chmod +x /usr/local/share/wkhtmltox/bin/wkhtmltopdf
-
-ln -sf /usr/local/share/wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
-ln -sf /usr/local/share/wkhtmltox/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
-
-apt-get -y purge wget
+# Cleanup
+rm -f wkhtmltox_0.12.6-1.bionic_amd64.deb
