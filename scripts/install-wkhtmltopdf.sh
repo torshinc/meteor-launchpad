@@ -78,5 +78,9 @@ cd /tmp
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
 dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
 
+chown -R node:node /usr/local/bin/wkhtmltopdf
+chmod +x /usr/local/bin/wkhtmltopdf
+ln -sf /usr/local/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
+
 # Cleanup
 rm -f wkhtmltox_0.12.6-1.bionic_amd64.deb
