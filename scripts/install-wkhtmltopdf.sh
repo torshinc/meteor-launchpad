@@ -80,7 +80,9 @@ dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
 
 chown -R node:node /usr/local/bin/wkhtmltopdf
 chmod +x /usr/local/bin/wkhtmltopdf
+
 ln -sf /usr/local/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
+ln -sf /usr/local/bin/wkhtmltopdf /usr/local/share/wkhtmltopdf
 
 echo "Current version of wkhtmltopdf: $(wkhtmltopdf --version)"
 echo "Current path of wkhtmltopdf: $(which wkhtmltopdf)"
