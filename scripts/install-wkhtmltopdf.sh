@@ -80,7 +80,7 @@ dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
 
 mv /usr/local/bin/wkhtmltopdf /usr/local/share
 
-chown -R node:node /usr/local/share/wkhtmltox
+chown -R node:node /usr/local/share/wkhtmltopdf
 chmod +x /usr/local/share/wkhtmltopdf
 
 ln -sf /usr/local/share/wkhtmltopdf /usr/local/bin/wkhtmltopdf
