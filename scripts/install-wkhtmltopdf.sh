@@ -65,7 +65,13 @@ echo "-----> Install wkhtmltopdffff"
 
 # Install required packages
 apt-get update
-apt-get install -y wget chrpath libssl-dev libxft-dev
+# apt-get install -y wget chrpath libssl-dev libxft-dev
+
+# from https://stackoverflow.com/questions/70073176/docker-install-wkhtmltopdf-error-updating-from-0-12-4-to-0-12-6
+apt install -y wget chrpath libssl-dev libxft-dev fontconfig fontconfig-config fonts-dejavu-core libbsd0 \
+libfontconfig1 libfontenc1 libfreetype6 libmd0 libpng16-16 \
+libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxext6 libxrender1 sensible-utils \
+ucf x11-common xfonts-75dpi xfonts-base xfonts-encodings xfonts-utils
 
 # Download and install wkhtmltopdf
 cd /tmp
