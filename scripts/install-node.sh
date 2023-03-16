@@ -10,17 +10,17 @@ printf "\n[-] Installing Node ${NODE_VERSION}...\n\n"
 
 NODE_DIST=node-v${NODE_VERSION}-linux-x64
 
-apt-get install -y --no-install-recommends curl wget
+# apt-get install -y --no-install-recommends curl wget
 
 
 cd /tmp
-wget -v -O -L https://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.xz
-tar xvJf ${NODE_DIST}.tar.xz
-rm ${NODE_DIST}.tar.xz
+curl -v -O -L https://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.gz
+tar xvzf ${NODE_DIST}.tar.gz
+rm ${NODE_DIST}.tar.gz
 rm -rf /opt/nodejs
 mv ${NODE_DIST} /opt/nodejs
 
 ln -sf /opt/nodejs/bin/node /usr/bin/node
 ln -sf /opt/nodejs/bin/npm /usr/bin/npm
 
-apt-get purge -y --auto-remove wget
+# apt-get purge -y --auto-remove wget
