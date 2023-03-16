@@ -11,7 +11,7 @@ printf "\n[-] Installing Node ${NODE_VERSION}...\n\n"
 NODE_DIST=node-v${NODE_VERSION}-linux-x64
 
 cd /tmp
-wget -v -O -L https://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.xz
+curl -v -O -L https://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.xz
 tar xvJf ${NODE_DIST}.tar.xz
 rm ${NODE_DIST}.tar.xz
 rm -rf /opt/nodejs
