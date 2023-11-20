@@ -26,7 +26,7 @@ printf "\n[-] Running npm install in app directory...\n\n"
 meteor npm install
 
 # Setting node options to prevent issue with heapsize during build
-export NODE_OPTIONS="--max-old-space-size=4096"
+export NODE_OPTIONS="--max-old-space-size=6144"
 
 # build the bundle
 printf "\n[-] Building Meteor application...\n\n"
