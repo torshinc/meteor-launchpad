@@ -25,8 +25,17 @@ cd $APP_SOURCE_DIR
 printf "\n[-] Running npm install in app directory...\n\n"
 meteor npm install
 
-# Setting node options to prevent issue with heapsize during build
-export NODE_OPTIONS="--max-old-space-size=6144"
+# Setting node options, setting max-old-space-size to prevent issue with heap size during build
+DEFAULT_TOOL_NODE_FLAGS="--max-old-space-size=6144"
+# Source the configuration file if it exists
+if [ -f $APP_SOURCE_DIR/launchpad.conf ]; then
+  source <(grep TOOL_NODE_FLAGS $APP_SOURCE_DIR/launchpad.conf)
+fi
+
+export TOOL_NODE_FLAGS="${TOOL_NODE_FLAGS:-$DEFAULT_TOOL_NODE_FLAGS}"
+
+# Print the current value of TOOL_NODE_FLAGS
+printf "TOOL_NODE_FLAGS is set to: %s\n" "$TOOL_NODE_FLAGS"
 
 # build the bundle
 printf "\n[-] Building Meteor application...\n\n"
