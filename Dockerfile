@@ -1,13 +1,14 @@
 FROM ubuntu:18.04
-MAINTAINER David Sykora <dsykora@gmail.com>
+
+LABEL maintainer="Torsh <dev@torsh.co>"
 
 RUN groupadd -r node && useradd -m -g node node
 
 # Gosu
-ENV GOSU_VERSION 1.13
+ENV GOSU_VERSION=1.13
 
 #Maybe fix an issue with MongoDB version 4.2 asking for user input on install, from: https://github.com/phusion/baseimage-docker/issues/58
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 #Java Runtime, used by open office
@@ -18,22 +19,22 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 
 
 # Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # MongoDB
-ENV MONGO_VERSION 4.2.14
-ENV MONGO_MAJOR 4.2
-ENV MONGO_PACKAGE mongodb-org
+ENV MONGO_VERSION=4.2.14 \
+    MONGO_MAJOR=4.2 \
+    MONGO_PACKAGE=mongodb-org
 
 # PhantomJS
-ENV PHANTOM_VERSION 2.1.1
+ENV PHANTOM_VERSION=2.1.1
 
 # build directories
-ENV APP_SOURCE_DIR /opt/meteor/src
-ENV APP_BUNDLE_DIR /opt/meteor/dist
-ENV BUILD_SCRIPTS_DIR /opt/build_scripts
-ENV BUILD_DIR /usr/local/share
-ENV CACHE_DIR /tmp
+ENV APP_SOURCE_DIR=/opt/meteor/src \
+    APP_BUNDLE_DIR=/opt/meteor/dist \
+    BUILD_SCRIPTS_DIR=/opt/build_scripts \
+    BUILD_DIR=/usr/local/share \
+    CACHE_DIR=/tmp
 
 # Add entrypoint and build scripts
 COPY scripts $BUILD_SCRIPTS_DIR
@@ -90,7 +91,7 @@ ONBUILD RUN cd $APP_SOURCE_DIR && \
   $BUILD_SCRIPTS_DIR/post-build-cleanup.sh
 
 # Default values for Meteor environment variables
-ENV PORT 3000
+ENV PORT=3000
 
 EXPOSE 3000
 
