@@ -12,7 +12,7 @@ apt-get update
 apt-get install -y wget chrpath libssl-dev libxft-dev
 
 cd /tmp
-wget https://s3.amazonaws.com/torsh-talent/ffmpeg3.tar.gz
+wget https://s3.amazonaws.com/torsh-talent-build-assets/ffmpeg3.tar.gz
 tar -xzf ffmpeg3.tar.gz
 
 chown -R node:node ffmpeg
