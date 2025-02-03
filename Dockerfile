@@ -72,6 +72,8 @@ ENV TOOL_NODE_FLAGS="--max-old-space-size=6144"
 # optionally custom apt dependencies at app build time
 ONBUILD RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GET_INSTALL; fi
 
+RUN apt-get update && apt-get install -y poppler-utils
+
 # copy the app to the container
 ONBUILD COPY . $APP_SOURCE_DIR
 
