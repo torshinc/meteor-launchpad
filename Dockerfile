@@ -93,7 +93,6 @@ ONBUILD RUN cd $APP_SOURCE_DIR && \
   $BUILD_SCRIPTS_DIR/install-graphicsmagick.sh && \
   $BUILD_SCRIPTS_DIR/install-ffmpeg.sh $BUILD_DIR $CACHE_DIR && \
   $BUILD_SCRIPTS_DIR/install-mediainfo.sh $BUILD_DIR $CACHE_DIR && \
-  $BUILD_SCRIPTS_DIR/install-wkhtmltopdf.sh $BUILD_DIR $CACHE_DIR && \
   $BUILD_SCRIPTS_DIR/install-libreoffice.sh $BUILD_DIR $CACHE_DIR && \
   $BUILD_SCRIPTS_DIR/install-mongo.sh && \
   $BUILD_SCRIPTS_DIR/install-meteor.sh && \

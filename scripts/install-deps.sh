@@ -5,12 +5,13 @@ set -e
 printf "\n[-] Installing base OS dependencies...\n\n"
 
 # install base dependencies
+# Note: python-is-python3 is used instead of python as Python 2 is deprecated
 
 apt-get update
 
 # ensure we can get an https apt source if redirected
 # https://github.com/torshdev/meteor-launchpad/issues/50
-apt-get install -y apt-transport-https ca-certificates
+apt-get install -y python-is-python3 apt-transport-https ca-certificates
 
 if [ -f $APP_SOURCE_DIR/launchpad.conf ]; then
   source <(grep APT_GET_INSTALL $APP_SOURCE_DIR/launchpad.conf)
@@ -21,7 +22,7 @@ if [ -f $APP_SOURCE_DIR/launchpad.conf ]; then
   fi
 fi
 
-apt-get install -y --no-install-recommends curl bzip2 bsdtar build-essential python git wget
+apt-get install -y --no-install-recommends curl bzip2 libarchive-tools build-essential python-is-python3 git wget
 
 
 # install gosu
