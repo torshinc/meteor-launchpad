@@ -66,6 +66,16 @@ ONBUILD ENV INSTALL_GRAPHICSMAGICK $INSTALL_GRAPHICSMAGICK
 ONBUILD ARG TOOL_NODE_FLAGS
 ONBUILD ENV TOOL_NODE_FLAGS "--max-old-space-size=6144"
 
+# Sentry environment variables
+ONBUILD ARG SENTRY_AUTH_TOKEN
+ONBUILD ENV SENTRY_AUTH_TOKEN $SENTRY_AUTH_TOKEN
+
+ONBUILD ARG SENTRY_ORG
+ONBUILD ENV SENTRY_ORG $SENTRY_ORG
+
+ONBUILD ARG SENTRY_URL
+ONBUILD ENV SENTRY_URL $SENTRY_URL
+
 #Set Memory Limit
 ENV TOOL_NODE_FLAGS="--max-old-space-size=6144"
 
@@ -88,6 +98,7 @@ ONBUILD RUN cd $APP_SOURCE_DIR && \
   $BUILD_SCRIPTS_DIR/install-mongo.sh && \
   $BUILD_SCRIPTS_DIR/install-meteor.sh && \
   $BUILD_SCRIPTS_DIR/build-meteor.sh && \
+  $BUILD_SCRIPTS_DIR/install-sentry.sh && \
   $BUILD_SCRIPTS_DIR/post-build-cleanup.sh
 
 # Default values for Meteor environment variables
