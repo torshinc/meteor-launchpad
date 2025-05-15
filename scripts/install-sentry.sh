@@ -20,11 +20,11 @@ export SENTRY_ORG=$SENTRY_ORG
 export SENTRY_URL=$SENTRY_URL
 
 # Create Sentry release for client
-sentry-cli releases new talent-client@$VERSION
-sentry-cli releases files talent-client@$VERSION upload-sourcemaps $APP_BUNDLE_DIR/bundle/programs/web.browser/
-sentry-cli releases finalize talent-client@$VERSION
+sentry-cli releases new talent-client@$VERSION --project talent-client
+sentry-cli releases files talent-client@$VERSION upload-sourcemaps $APP_BUNDLE_DIR/bundle/programs/web.browser/ --project talent-client
+sentry-cli releases finalize talent-client@$VERSION --project talent-client
 
 # Create Sentry release for server
-sentry-cli releases new talent-server@$VERSION
-sentry-cli releases files talent-server@$VERSION upload-sourcemaps $APP_BUNDLE_DIR/bundle/programs/server/
-sentry-cli releases finalize talent-server@$VERSION 
+sentry-cli releases new talent-server@$VERSION --project talent-server
+sentry-cli releases files talent-server@$VERSION upload-sourcemaps $APP_BUNDLE_DIR/bundle/programs/server/ --project talent-server
+sentry-cli releases finalize talent-server@$VERSION --project talent-server 
