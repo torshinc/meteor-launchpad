@@ -64,7 +64,7 @@ ONBUILD ENV INSTALL_GRAPHICSMAGICK $INSTALL_GRAPHICSMAGICK
 
 # Node flags for the Meteor build tool
 ONBUILD ARG TOOL_NODE_FLAGS
-ONBUILD ENV TOOL_NODE_FLAGS "--max-old-space-size=6144"
+ONBUILD ENV TOOL_NODE_FLAGS "--max-old-space-size=8200"
 
 # Sentry environment variables
 ONBUILD ARG SENTRY_AUTH_TOKEN
@@ -77,7 +77,7 @@ ONBUILD ARG SENTRY_URL
 ONBUILD ENV SENTRY_URL $SENTRY_URL
 
 #Set Memory Limit
-ENV TOOL_NODE_FLAGS="--max-old-space-size=6144"
+ENV TOOL_NODE_FLAGS="--max-old-space-size=8200"
 
 # optionally custom apt dependencies at app build time
 ONBUILD RUN if [ "$APT_GET_INSTALL" ]; then apt-get update && apt-get install -y $APT_GET_INSTALL; fi
